@@ -1,0 +1,80 @@
+#! /Users/andre_apl/Downloads/oss-cad-suite/bin/vvp
+:ivl_version "13.0 (devel)" "(s20251012-95-ga44b3fbe4)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/Users/andre_apl/Downloads/oss-cad-suite/lib/ivl/system.vpi";
+:vpi_module "/Users/andre_apl/Downloads/oss-cad-suite/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/Users/andre_apl/Downloads/oss-cad-suite/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/Users/andre_apl/Downloads/oss-cad-suite/lib/ivl/v2005_math.vpi";
+:vpi_module "/Users/andre_apl/Downloads/oss-cad-suite/lib/ivl/va_math.vpi";
+S_0x103aa2c90 .scope module, "gates_tb" "gates_tb" 2 1;
+ .timescale 0 0;
+v0xca10548c0_0 .var "a", 0 0;
+v0xca1054960_0 .var "b", 0 0;
+v0xca1054a00_0 .net "out", 7 0, L_0xca1054d20;  1 drivers
+S_0x103aa0930 .scope module, "DUT" "gates" 2 7, 3 1 0, S_0x103aa2c90;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /INPUT 1 "b";
+    .port_info 2 /OUTPUT 8 "out";
+L_0x103aa7bc0 .functor AND 1, v0xca10548c0_0, v0xca1054960_0, C4<1>, C4<1>;
+L_0x103aa7c30 .functor OR 1, v0xca10548c0_0, v0xca1054960_0, C4<0>, C4<0>;
+L_0x103aa7b40 .functor AND 1, v0xca10548c0_0, v0xca1054960_0, C4<1>, C4<1>;
+L_0x103aa8d00 .functor OR 1, v0xca10548c0_0, v0xca1054960_0, C4<0>, C4<0>;
+L_0x103aa8d70 .functor XOR 1, v0xca10548c0_0, v0xca1054960_0, C4<0>, C4<0>;
+L_0x103aa8de0 .functor XOR 1, v0xca10548c0_0, v0xca1054960_0, C4<0>, C4<0>;
+v0xca1054000_0 .net *"_ivl_10", 0 0, L_0x103aa7bc0;  1 drivers
+v0xca10540a0_0 .net *"_ivl_14", 0 0, L_0x103aa7c30;  1 drivers
+v0xca1054140_0 .net *"_ivl_18", 0 0, L_0x103aa7b40;  1 drivers
+v0xca10541e0_0 .net *"_ivl_21", 0 0, L_0xca1054be0;  1 drivers
+v0xca1054280_0 .net *"_ivl_24", 0 0, L_0x103aa8d00;  1 drivers
+v0xca1054320_0 .net *"_ivl_27", 0 0, L_0xca1054c80;  1 drivers
+v0xca10543c0_0 .net *"_ivl_3", 0 0, L_0xca1054aa0;  1 drivers
+v0xca1054460_0 .net *"_ivl_30", 0 0, L_0x103aa8d70;  1 drivers
+v0xca1054500_0 .net *"_ivl_35", 0 0, L_0x103aa8de0;  1 drivers
+v0xca10545a0_0 .net *"_ivl_38", 0 0, L_0xca1054dc0;  1 drivers
+v0xca1054640_0 .net *"_ivl_7", 0 0, L_0xca1054b40;  1 drivers
+v0xca10546e0_0 .net "a", 0 0, v0xca10548c0_0;  1 drivers
+v0xca1054780_0 .net "b", 0 0, v0xca1054960_0;  1 drivers
+v0xca1054820_0 .net "out", 7 0, L_0xca1054d20;  alias, 1 drivers
+L_0xca1054aa0 .reduce/nor v0xca10548c0_0;
+L_0xca1054b40 .reduce/nor v0xca1054960_0;
+L_0xca1054be0 .reduce/nor L_0x103aa7b40;
+L_0xca1054c80 .reduce/nor L_0x103aa8d00;
+LS_0xca1054d20_0_0 .concat8 [ 1 1 1 1], L_0xca1054aa0, L_0xca1054b40, L_0x103aa7bc0, L_0x103aa7c30;
+LS_0xca1054d20_0_4 .concat8 [ 1 1 1 1], L_0xca1054be0, L_0xca1054c80, L_0x103aa8d70, L_0xca1054dc0;
+L_0xca1054d20 .concat8 [ 4 4 0 0], LS_0xca1054d20_0_0, LS_0xca1054d20_0_4;
+L_0xca1054dc0 .reduce/nor L_0x103aa8de0;
+    .scope S_0x103aa2c90;
+T_0 ;
+    %vpi_call 2 11 "$display", "simulacion iniciada" {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0xca10548c0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0xca1054960_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0xca1054960_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0xca10548c0_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0xca1054960_0, 0, 1;
+    %delay 10, 0;
+    %vpi_call 2 21 "$display", "simulacion finalizada" {0 0 0};
+    %vpi_call 2 22 "$stop" {0 0 0};
+    %vpi_call 2 23 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+    .scope S_0x103aa2c90;
+T_1 ;
+    %vpi_call 2 27 "$monitor", "a = %b,b = %b,out = %b,", v0xca10548c0_0, v0xca1054960_0, v0xca1054a00_0 {0 0 0};
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "gates_tb.v";
+    "gates.v";

@@ -1,0 +1,174 @@
+#! /Users/andre_apl/Downloads/oss-cad-suite/bin/vvp
+:ivl_version "13.0 (devel)" "(s20251012-95-ga44b3fbe4)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/Users/andre_apl/Downloads/oss-cad-suite/lib/ivl/system.vpi";
+:vpi_module "/Users/andre_apl/Downloads/oss-cad-suite/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/Users/andre_apl/Downloads/oss-cad-suite/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/Users/andre_apl/Downloads/oss-cad-suite/lib/ivl/v2005_math.vpi";
+:vpi_module "/Users/andre_apl/Downloads/oss-cad-suite/lib/ivl/va_math.vpi";
+S_0x1051bcb50 .scope module, "hvsync_generator" "hvsync_generator" 2 1;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "clk";
+    .port_info 1 /INPUT 1 "pixel_tick";
+    .port_info 2 /OUTPUT 1 "vga_h_sync";
+    .port_info 3 /OUTPUT 1 "vga_v_sync";
+    .port_info 4 /OUTPUT 1 "inDisplayArea";
+    .port_info 5 /OUTPUT 10 "CounterX";
+    .port_info 6 /OUTPUT 10 "CounterY";
+L_0x1051c4e60 .functor BUFZ 1, v0x7e30585a0_0, C4<0>, C4<0>, C4<0>;
+L_0x1051c50f0 .functor BUFZ 1, v0x7e3058640_0, C4<0>, C4<0>, C4<0>;
+v0x1051c65a0_0 .var "CounterX", 9 0;
+v0x1051c5050_0 .var "CounterY", 9 0;
+v0x1051c4dc0_0 .net *"_ivl_0", 31 0, L_0x1051c6ba0;  1 drivers
+L_0x7e28540a0 .functor BUFT 1, C4<0000000000000000000000>, C4<0>, C4<0>, C4<0>;
+v0x1051bccd0_0 .net *"_ivl_11", 21 0, L_0x7e28540a0;  1 drivers
+L_0x7e28540e8 .functor BUFT 1, C4<00000000000000000000001000001100>, C4<0>, C4<0>, C4<0>;
+v0x7e3058000_0 .net/2u *"_ivl_12", 31 0, L_0x7e28540e8;  1 drivers
+L_0x7e2854010 .functor BUFT 1, C4<0000000000000000000000>, C4<0>, C4<0>, C4<0>;
+v0x7e30580a0_0 .net *"_ivl_3", 21 0, L_0x7e2854010;  1 drivers
+L_0x7e2854058 .functor BUFT 1, C4<00000000000000000000001100011111>, C4<0>, C4<0>, C4<0>;
+v0x7e3058140_0 .net/2u *"_ivl_4", 31 0, L_0x7e2854058;  1 drivers
+v0x7e30581e0_0 .net *"_ivl_8", 31 0, L_0x1051c6c40;  1 drivers
+o0x7e2820190 .functor BUFZ 1, c4<z>; HiZ drive
+v0x7e3058280_0 .net "clk", 0 0, o0x7e2820190;  0 drivers
+v0x7e3058320_0 .net "counterXmaxed", 0 0, L_0x7e3058820;  1 drivers
+v0x7e30583c0_0 .net "counterYmaxed", 0 0, L_0x7e30588c0;  1 drivers
+v0x7e3058460_0 .var "inDisplayArea", 0 0;
+o0x7e2820250 .functor BUFZ 1, c4<z>; HiZ drive
+v0x7e3058500_0 .net "pixel_tick", 0 0, o0x7e2820250;  0 drivers
+v0x7e30585a0_0 .var "vga_HS", 0 0;
+v0x7e3058640_0 .var "vga_VS", 0 0;
+v0x7e30586e0_0 .net "vga_h_sync", 0 0, L_0x1051c4e60;  1 drivers
+v0x7e3058780_0 .net "vga_v_sync", 0 0, L_0x1051c50f0;  1 drivers
+E_0x1051bd2b0 .event posedge, v0x7e3058280_0;
+L_0x1051c6ba0 .concat [ 10 22 0 0], v0x1051c65a0_0, L_0x7e2854010;
+L_0x7e3058820 .cmp/eq 32, L_0x1051c6ba0, L_0x7e2854058;
+L_0x1051c6c40 .concat [ 10 22 0 0], v0x1051c5050_0, L_0x7e28540a0;
+L_0x7e30588c0 .cmp/eq 32, L_0x1051c6c40, L_0x7e28540e8;
+    .scope S_0x1051bcb50;
+T_0 ;
+    %pushi/vec4 0, 0, 10;
+    %store/vec4 v0x1051c65a0_0, 0, 10;
+    %pushi/vec4 0, 0, 10;
+    %store/vec4 v0x1051c5050_0, 0, 10;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x7e30585a0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x7e3058640_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_0x1051bcb50;
+T_1 ;
+    %wait E_0x1051bd2b0;
+    %load/vec4 v0x7e3058500_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_1.0, 8;
+    %load/vec4 v0x7e3058320_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_1.2, 8;
+    %pushi/vec4 0, 0, 10;
+    %assign/vec4 v0x1051c65a0_0, 0;
+    %jmp T_1.3;
+T_1.2 ;
+    %load/vec4 v0x1051c65a0_0;
+    %addi 1, 0, 10;
+    %assign/vec4 v0x1051c65a0_0, 0;
+T_1.3 ;
+T_1.0 ;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_0x1051bcb50;
+T_2 ;
+    %wait E_0x1051bd2b0;
+    %load/vec4 v0x7e3058500_0;
+    %flag_set/vec4 9;
+    %flag_get/vec4 9;
+    %jmp/0 T_2.2, 9;
+    %load/vec4 v0x7e3058320_0;
+    %and;
+T_2.2;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_2.0, 8;
+    %load/vec4 v0x7e30583c0_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_2.3, 8;
+    %pushi/vec4 0, 0, 10;
+    %assign/vec4 v0x1051c5050_0, 0;
+    %jmp T_2.4;
+T_2.3 ;
+    %load/vec4 v0x1051c5050_0;
+    %addi 1, 0, 10;
+    %assign/vec4 v0x1051c5050_0, 0;
+T_2.4 ;
+T_2.0 ;
+    %jmp T_2;
+    .thread T_2;
+    .scope S_0x1051bcb50;
+T_3 ;
+    %wait E_0x1051bd2b0;
+    %load/vec4 v0x7e3058500_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_3.0, 8;
+    %load/vec4 v0x1051c65a0_0;
+    %pad/u 32;
+    %cmpi/e 656, 0, 32;
+    %flag_get/vec4 4;
+    %jmp/0 T_3.2, 4;
+    %load/vec4 v0x1051c65a0_0;
+    %pad/u 32;
+    %cmpi/u 752, 0, 32;
+    %flag_get/vec4 5;
+    %and;
+T_3.2;
+    %assign/vec4 v0x7e30585a0_0, 0;
+T_3.0 ;
+    %jmp T_3;
+    .thread T_3;
+    .scope S_0x1051bcb50;
+T_4 ;
+    %wait E_0x1051bd2b0;
+    %load/vec4 v0x7e3058500_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_4.0, 8;
+    %load/vec4 v0x1051c5050_0;
+    %pad/u 32;
+    %cmpi/e 490, 0, 32;
+    %flag_get/vec4 4;
+    %jmp/0 T_4.2, 4;
+    %load/vec4 v0x1051c5050_0;
+    %pad/u 32;
+    %cmpi/u 492, 0, 32;
+    %flag_get/vec4 5;
+    %and;
+T_4.2;
+    %assign/vec4 v0x7e3058640_0, 0;
+T_4.0 ;
+    %jmp T_4;
+    .thread T_4;
+    .scope S_0x1051bcb50;
+T_5 ;
+    %wait E_0x1051bd2b0;
+    %load/vec4 v0x7e3058500_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_5.0, 8;
+    %load/vec4 v0x1051c65a0_0;
+    %pad/u 32;
+    %cmpi/u 640, 0, 32;
+    %flag_get/vec4 5;
+    %jmp/0 T_5.2, 5;
+    %load/vec4 v0x1051c5050_0;
+    %pad/u 32;
+    %cmpi/u 480, 0, 32;
+    %flag_get/vec4 5;
+    %and;
+T_5.2;
+    %assign/vec4 v0x7e3058460_0, 0;
+T_5.0 ;
+    %jmp T_5;
+    .thread T_5;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "hvsync_generator.v";

@@ -1,0 +1,49 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Claude Code
+.claude/
+
+# OSS CAD Suite (large toolchain binary — install locally via https://github.com/YosysHQ/oss-cad-suite-build)
+oss-cad-suite/
+
+# Simulation output
+*.vcd
+*.fst
+*.ghw
+work/
+sim_build/
+
+# Quartus generated files
+db/
+incremental_db/
+output_files/
+greybox_tmp/
+*.qpf
+*.qsf.bak
+*.rpt
+*.smsg
+*.pin
+*.summary
+*.jdi
+*.sof
+*.pof
+*.rbf
+
+# Vivado generated files
+*.xpr
+*.bit
+*.runs/
+*.cache/
+*.hw/
+*.ip_user_files/
+*.sim/
+
+# Editor / IDE
+*.swp
+*.swo
+*~
+.vscode/
+*.orig

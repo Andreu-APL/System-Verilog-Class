@@ -1,0 +1,85 @@
+`timescale 1ns / 1ps
+
+module main_tb;
+
+    reg clk;
+    reg rst;
+    reg up_down;
+    reg load;
+    reg [6:0] data_in;
+
+    wire [0:6] D_un;
+    wire [0:6] D_de;
+    wire [0:6] D_ce;
+    wire [0:6] D_mi;
+
+    main uut (
+        .clk(clk), 
+        .rst(rst), 
+        .up_down(up_down), 
+        .load(load), 
+        .data_in(data_in), 
+        .D_un(D_un), 
+        .D_de(D_de), 
+        .D_ce(D_ce), 
+        .D_mi(D_mi)
+    );
+
+    // Override parameters for faster simulation
+    // Adjusting CLK_FREQ and FREQ so that the internal clock divider
+    // produces a clock that is fast enough for simulation.
+    // constantnum = CLK_FREQ / (2 * FREQ)
+    // We want constantnum to be small, e.g., 2.
+    // If CLK_FREQ = 100 and FREQ = 25, then constantnum = 2.
+    defparam uut.u_clk_div.CLK_FREQ = 100;
+    defparam uut.u_clk_div.FREQ = 25;
+
+    initial begin
+        clk = 0;
+        forever #5 clk = ~clk;
+    end
+
+    initial begin
+        $dumpfile("main_tb.vcd");
+        $dumpvars(0, main_tb);
+
+        rst = 1;
+        up_down = 0; 
+        load = 1;   
+        data_in = 0;
+
+        #100;
+        rst = 0;
+
+ 
+        $display("Counting Up...");
+        #1000;
+
+        $display("Switching to Count Down...");
+        up_down = 1;
+        #1000;
+
+        // Test Save functionality
+        // count.v logic: if (load == 0 && data_in == 1) save <= counter;
+        $display("Testing Save functionality...");
+        load = 0;
+        data_in = 7'd1;
+        #50; // Wait a few clock cycles
+        load = 1;
+        data_in = 0;
+        
+        $display("Counting further...");
+        #500;
+        
+        // Test Load functionality
+        // count.v logic: if (load == 0) counter <= save; (when data_in != 1)
+        $display("Testing Load functionality (Restoring saved value)...");
+        load = 0;
+        data_in = 0;
+        #50;
+        load = 1;
+        #500;
+        
+        $finish;
+    end
+endmodule
