@@ -3,9 +3,6 @@
 .AppleDouble
 .LSOverride
 
-# Claude Code
-.claude/
-
 # OSS CAD Suite (large toolchain binary — install locally via https://github.com/YosysHQ/oss-cad-suite-build)
 oss-cad-suite/
 
