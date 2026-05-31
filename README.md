@@ -52,6 +52,7 @@ PERIOD_1/
 SemiconductorsCourse/
 ├── MUX/
 └── DEMUX/
+└── FSM/
 ```
 
 ## Simulating
