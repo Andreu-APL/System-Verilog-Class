@@ -1,7 +1,3 @@
-// Moore FSM: detects the bit sequence "101" on a serial input.
-// Output is a function of state only (that's what makes it Moore).
-// Overlapping is allowed, so "10101" fires twice.
-
 module seq_detect (
     input  logic clk,
     input  logic rst_n,   // active low
@@ -9,10 +5,6 @@ module seq_detect (
     output logic found    // high for one cycle when "101" completes
 );
 
-    // S0: nothing yet
-    // S1: saw "1"
-    // S2: saw "10"
-    // S3: saw "101"  -> assert output
     typedef enum logic [1:0] {S0, S1, S2, S3} state_t;
     state_t state, next;
 
