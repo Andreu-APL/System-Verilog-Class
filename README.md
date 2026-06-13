@@ -12,48 +12,6 @@ source oss-cad-suite/activate
 
 For flashing to the board, Quartus Prime.
 
-## Structure
-
-```
-PERIOD_1/
-├── LABS/
-│   ├── GATES/
-│   ├── FULL ADDER/
-│   ├── SUM/
-│   ├── SUM_ITERATIVE/
-│   ├── MUX/
-│   ├── BCD/
-│   ├── CALCULATOR/
-│   ├── CLOCKDIV/
-│   ├── COUNTER/
-│   ├── FLIPFLOPS/
-│   ├── M_ESTADOS/
-│   ├── MIN_MAX_FINDER/
-│   ├── CAM_Lab/
-│   ├── CAM_mio/
-│   ├── VGA/
-│   ├── PONG/
-│   └── GUIDE_EXERCISES/
-├── ASSIGNMENTS/
-│   ├── PRAC_1/
-│   ├── PRAC_2/
-│   ├── PRAC_3/
-│   ├── PRAC_4/
-│   ├── PRAC_5 ( PWM )/
-│   ├── PRAC_6 ( UART )/
-│   └── PRAC_7 ( vga chees )/
-├── Examen/
-│   ├── Chronometer/
-│   ├── MIN_MAX_FINDER/
-│   └── Sumator/
-├── Robotic_Arm/
-└── Pins_etc/           # pin assignment scripts + DE10-Lite manual
-
-SemiconductorsCourse/
-├── MUX/
-└── DEMUX/
-└── FSM/
-```
 
 ## Simulating
 
